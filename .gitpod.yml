@@ -6,4 +6,5 @@ tasks:
   - init: mvn install -DskipTests=true
     command: echo 'hello world'
 
-
+image:
+  file: .gitpod.Dockerfile
