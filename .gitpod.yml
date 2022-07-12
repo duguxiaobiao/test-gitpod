@@ -3,7 +3,9 @@
 # and commit this file to your remote git repository to share the goodness with others.
 
 tasks:
-  - init: mvn install -DskipTests=true
+
+  - before: docker run --name test-mysql -e MYSQL_ROOT_PASSWORD=123456 -p 3306:3306 -d mysql:5.7
+    init: mvn install -DskipTests=true
     command: java -jar target/*.jar # 自启动
 
 vscode:
