@@ -4,8 +4,9 @@
 
 tasks:
 
-  - before: docker run --name test-mysql -e MYSQL_ROOT_PASSWORD=123456 -p 3306:3306 -d mysql:5.7
-    init: mvn install -DskipTests=true
+  - init: |
+      mvn install -DskipTests=true
+      docker run --name test-mysql -e MYSQL_ROOT_PASSWORD=123456 -p 3306:3306 -d mysql:5.7
     command: java -jar target/*.jar # 自启动
 
 vscode:
