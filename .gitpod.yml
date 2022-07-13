@@ -6,7 +6,7 @@ tasks:
 
   - init: |
       docker run --name test-mysql -e MYSQL_ROOT_PASSWORD=duguxiaobiao  -e MYSQL_DATABASE=test_gitpod -p 3306:3306 -d --restart=always mysql:5.7
-      gp sync-done db
+      gp sync-done mysql
     name: startMysql
 
   - init: |
