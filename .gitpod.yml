@@ -26,6 +26,22 @@ tasks:
     command: java -jar target/*.jar
     name: startServer
 
+ports:
+  - port: 3306
+    name: mysqlPort
+    description: mysql数据库端口
+    onOpen: ignore
+
+  - port: 6379
+    name: redisPort
+    description: redis端口
+    onOpen: ignore
+
+  - port: 8080
+    name: serverPort
+    description: 项目启动端口
+    onOpen: open-browser
+
 vscode:
   extensions:
     - redhat.java
