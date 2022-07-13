@@ -19,12 +19,15 @@ tasks:
       # gp sync-done bundle
     name: compileJar
 
-  - init: |
+  - command: java -jar target/*.jar
+    name: startServer
+
+  #- # init: |
       # gp sync-await mysql
       # gp sync-await redis
       # gp sync-await bundle
-    command: java -jar target/*.jar
-    name: startServer
+    # command: java -jar target/*.jar
+    # name: startServer
 
 ports:
   - port: 3306
