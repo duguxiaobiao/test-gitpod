@@ -14,8 +14,11 @@ tasks:
 
   - init: |
       mvn install -DskipTests=true
+      gp sync-done bundle
+    name: compileJar
 
-  - command: java -jar target/*.jar
+  - init: gp sync-await bundle
+    command: java -jar target/*.jar
     name: startServer
 
 vscode:
