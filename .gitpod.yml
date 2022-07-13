@@ -15,13 +15,14 @@ tasks:
     name: startRedis
 
   - init: |
-      gp sync-await mysql
-      gp sync-await redis
       mvn install -DskipTests=true
       gp sync-done bundle
     name: compileJar
 
-  - init: gp sync-await bundle
+  - init: |
+      gp sync-await mysql
+      gp sync-await redis
+      gp sync-await bundle
     command: java -jar target/*.jar
     name: startServer
 
