@@ -4,12 +4,12 @@
 
 tasks:
 
-  - init:
+  - init: |
       docker run --name test-mysql -e MYSQL_ROOT_PASSWORD=duguxiaobiao  -e MYSQL_DATABASE=test_gitpod -p 3306:3306 -d --restart=always mysql:5.7
       gp sync-done db
     name: startMysql
 
-  - init:
+  - init: |
       docker run -p 6379:6379 --name redis -d --restart=always redis:latest redis-server --appendonly yes --requirepass "123456"
       gp sync-done redis
     name: startRedis
