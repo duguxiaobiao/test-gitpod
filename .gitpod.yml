@@ -6,7 +6,8 @@ tasks:
 
   - init: |
       docker run --name test-mysql -e MYSQL_ROOT_PASSWORD=duguxiaobiao  -e MYSQL_DATABASE=test_gitpod -p 3306:3306 -d --restart=always mysql:5.7
-      gp sync-done mysql
+      echo 'mysql running '
+      # gp sync-done mysql
     name: startMysql
 
   - init: |
@@ -20,7 +21,7 @@ tasks:
     name: compileJar
 
   - init: |
-      gp sync-await mysql
+      # gp sync-await mysql
       gp sync-await redis
       gp sync-await bundle
     command: java -jar target/*.jar
