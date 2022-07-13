@@ -14,8 +14,8 @@ tasks:
 
   - init: |
       mvn install -DskipTests=true
-#      docker run --name test-mysql -e MYSQL_ROOT_PASSWORD=duguxiaobiao  -e MYSQL_DATABASE=test_gitpod -p 3306:3306 -d mysql:5.7
-    command: java -jar target/*.jar # 自启动
+
+  - command: java -jar target/*.jar
     name: startServer
 
 vscode:
