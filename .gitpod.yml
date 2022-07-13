@@ -4,9 +4,17 @@
 
 tasks:
 
+  - init:
+      docker run --name test-mysql -e MYSQL_ROOT_PASSWORD=duguxiaobiao  -e MYSQL_DATABASE=test_gitpod -p 3306:3306 -d mysql:5.7
+    name: startMysql
+
+  - init:
+      docker run -p 63790:6379 --name redis -d --restart=always redis:latest redis-server --appendonly yes --requirepass "123456"
+    name: startRedis
+
   - init: |
       mvn install -DskipTests=true
-      docker run --name test-mysql -e MYSQL_ROOT_PASSWORD=duguxiaobiao  -e MYSQL_DATABASE=test_gitpod -p 3306:3306 -d mysql:5.7
+#      docker run --name test-mysql -e MYSQL_ROOT_PASSWORD=duguxiaobiao  -e MYSQL_DATABASE=test_gitpod -p 3306:3306 -d mysql:5.7
     command: java -jar target/*.jar # 自启动
     name: startServer
 

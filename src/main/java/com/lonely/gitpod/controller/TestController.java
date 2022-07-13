@@ -1,7 +1,10 @@
 package com.lonely.gitpod.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.TypeReference;
 import com.lonely.gitpod.entity.User;
 import com.lonely.gitpod.service.UserService;
+import com.lonely.gitpod.utils.RedisUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +25,9 @@ public class TestController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private RedisUtil redisUtil;
 
     @GetMapping("/test1")
     public String test1() {
@@ -50,5 +56,25 @@ public class TestController {
         return this.userService.selectUsers();
     }
 
+
+    /**
+     * 验证集成redis
+     * @return
+     */
+    @GetMapping("/test4")
+    public List<User> test4() {
+
+        Object obj = this.redisUtil.get("KEY_USERS");
+        if (obj != null) {
+            log.info("走Redis缓存");
+            return JSON.parseObject((String) obj, new TypeReference<List<User>>() {
+            });
+        }
+
+        List<User> users = this.userService.selectUsers();
+        this.redisUtil.set("KEY_USERS", JSON.toJSONString(users));
+
+        return users;
+    }
 
 }
