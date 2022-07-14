@@ -73,7 +73,7 @@ vscode:
     - gabrielbb.vscode-lombok
 
 checkoutLocation: gui/
-workspaceLocation: ./gui
+workspaceLocation: gui/
 
 
 # image:
