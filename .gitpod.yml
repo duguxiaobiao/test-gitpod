@@ -19,6 +19,10 @@ tasks:
       # gp sync-done bundle
     name: compileJar
 
+  - init: |
+      cd ..
+      pwd
+
   - command: java -jar target/*.jar
     name: startServer
 
@@ -71,6 +75,9 @@ vscode:
     - vscjava.vscode-java-test
     - pivotal.vscode-spring-boot
     - gabrielbb.vscode-lombok
+
+checkoutLocation: gui/
+workspaceLocation: .
 
 
 # image:
