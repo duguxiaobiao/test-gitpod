@@ -72,8 +72,8 @@ vscode:
     - pivotal.vscode-spring-boot
     - gabrielbb.vscode-lombok
 
-checkoutLocation: gui/
-workspaceLocation: gui/
+#checkoutLocation: gui/
+#workspaceLocation: .
 
 
 # image:
